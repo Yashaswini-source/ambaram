@@ -121,6 +121,7 @@
       box-shadow:0 3px 6px rgba(0,0,0,.1);
       font-family:'Playfair Display',serif;
     }
+    
     nav ul{
       display:flex;
       list-style:none;
@@ -599,15 +600,17 @@
     ============================== */
     .hamburger{
       display:none;
-      width:46px;height:46px;
-      border-radius:12px;
-      border:1px solid rgba(255,255,255,.35);
-      background: rgba(255,255,255,.16);
-      backdrop-filter: blur(8px);
-      cursor:pointer;
-      position:relative;
-      z-index:1101;
-      transition: var(--transition);
+  padding: 8px 6px;          /* tight padding */
+  border-radius: 10px;
+  border:1px solid rgba(255,255,255,.35);
+  background: rgba(255,255,255,.16);
+  backdrop-filter: blur(8px);
+  cursor:pointer;
+  position:relative;
+  z-index:1101;
+  transition: var(--transition);
+  width: auto;               /* 🔥 key change */
+  height: auto;
     }
     .hamburger:hover{transform: translateY(-1px); background: rgba(255,255,255,.22);}
     .hamburger span{
@@ -629,20 +632,64 @@
   position: fixed;
   top: 74px;
   right: 16px;
-  width: min(320px, calc(100vw - 32px));
-
-  /* 🔥 SAME AS HEADER */
+  width: fit-content;
+    max-width: calc(100vw - 32px);
   background: linear-gradient(135deg,var(--saffron),var(--maroon),var(--gold));
   background-size:200% 200%;
   animation: headerGlow 8s ease infinite;
-
   border-radius: 18px;
-  padding: 16px;
+  padding: 16px 14px;
   box-shadow: 0 18px 50px rgba(0,0,0,.35);
         display: none;
         flex-direction: column;
         gap: 12px;
-      }
+        align-items: flex-start;  
+      }nav ul.open{ display:flex; }
+    }
+      @media (max-width: 800px){
+
+  /* make every menu row a clean block */
+  #navLinks li{
+    width: 100%;
+    margin: 0;
+  }
+
+  #navLinks a{
+    display: block;          /* ✅ key */
+    width: 100%;
+    padding: 12px 14px;      /* more breathing room */
+    line-height: 1.2;        /* ✅ prevents overlap */
+    border-radius: 14px;
+    background: rgba(255,255,255,.14);
+  }
+   nav ul{
+    align-items: flex-start; /* left aligned pills */
+  }
+
+  #navLinks li{
+    width: auto;
+  }
+
+  #navLinks a{
+    display: inline-flex;     /* 🔥 key change */
+    width: auto;              /* 🔥 shrink to text */
+    min-width: max-content;   /* 🔥 longest word controls width */
+    padding: 12px 20px;
+    line-height: 1.2;
+    border-radius: 16px;
+
+    background: rgba(255,255,255,.18);
+    color: var(--white);
+    font-weight: 700;
+    letter-spacing: .8px;
+  }
+}
+  /* increase spacing between items */
+  nav ul{
+    gap: 14px;               /* was 12px */
+  }
+}
+
       nav ul.open{display:flex;}
       nav a{
         color: var(--white);
@@ -656,16 +703,19 @@
         background: rgba(255,255,255,.22);
       }
       nav a.active::after{display:none;}
-    }
-    .hamburger.is-open span:nth-child(1){
-      transform: translateY(7px) rotate(45deg);
-    }
-    .hamburger.is-open span:nth-child(2){
-      opacity:0;
-    }
-    .hamburger.is-open span:nth-child(3){
-      transform: translateY(-7px) rotate(-45deg);
-    }
+   
+.hamburger.is-open span{
+  display:none;
+}
+
+.hamburger.is-open::after{
+  content: "✕";
+  color: white;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1;
+}
+
     /* ✅ ADD THESE STYLES (anywhere in your CSS, preferably near About section styles) */
 .about-media{
   background: var(--white);
