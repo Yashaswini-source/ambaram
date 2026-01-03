@@ -506,6 +506,27 @@
       margin-bottom: 14px;
       color:#fff;
     }
+/* Subscribe button – match header/theme */
+.footer-form .btn{
+  background: linear-gradient(135deg,var(--saffron),var(--maroon));
+  color: var(--white);
+  box-shadow: 0 6px 18px rgba(128,0,0,.35);
+  border: none;
+}
+/* Center social icons on mobile */
+@media (max-width: 900px){
+  .footer-social{
+    justify-content: center;   /* center horizontally */
+    margin-top: 18px;
+  }
+}
+
+
+.footer-form .btn:hover{
+  background: linear-gradient(135deg,var(--maroon),var(--gold));
+  color: var(--white);
+  transform: translateY(-1px);
+}
 
     .footer-links{
       display:flex;
