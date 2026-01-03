@@ -625,18 +625,20 @@
     @media (max-width: 800px){
       .hamburger{display:flex; align-items:center; justify-content:center; flex-direction:column;}
       nav{position:relative; z-index:1100;}
-      nav ul{
-        position: fixed;
-        top: 74px;
-        right: 16px;
-        width: min(320px, calc(100vw - 32px));
-        background: rgba(255,255,255,.16);
-        border: 1px solid rgba(255,255,255,.30);
-        backdrop-filter: blur(12px);
-        border-radius: 18px;
-        padding: 16px;
-        box-shadow: 0 18px 50px rgba(0,0,0,.25);
+        nav ul{
+  position: fixed;
+  top: 74px;
+  right: 16px;
+  width: min(320px, calc(100vw - 32px));
 
+  /* 🔥 SAME AS HEADER */
+  background: linear-gradient(135deg,var(--saffron),var(--maroon),var(--gold));
+  background-size:200% 200%;
+  animation: headerGlow 8s ease infinite;
+
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: 0 18px 50px rgba(0,0,0,.35);
         display: none;
         flex-direction: column;
         gap: 12px;
@@ -647,11 +649,11 @@
         font-size: 14px;
         padding: 10px 12px;
         border-radius: 12px;
-        background: rgba(0,0,0,.08);
+        background: rgba(255,255,255,.12);
       }
       nav a:hover, nav a.active{
         color: var(--gold);
-        background: rgba(0,0,0,.14);
+        background: rgba(255,255,255,.22);
       }
       nav a.active::after{display:none;}
     }
